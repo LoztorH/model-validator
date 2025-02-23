@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prerelease": "rm -r -f dist && tsc",
-    "release": "standard-version && git push --follow-tags && npm publish"
+    "release": "standard-version && git push --follow-tags",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",

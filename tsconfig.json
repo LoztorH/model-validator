@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+    "inlineSources": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strict": true,
+    "removeComments": false,
+  },
+  "lib": ["es2019"]
+}

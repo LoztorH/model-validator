@@ -1,14 +1,13 @@
 {
   "name": "loztorh-model-validator",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prerelease": "rm -r -f dist && tsc",
-    "release": "standard-version && git push --follow-tags",
-    "publish": "npm publish"
+    "release": "standard-version && git push --follow-tags"
   },
   "repository": {
     "type": "git",

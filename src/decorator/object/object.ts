@@ -5,8 +5,8 @@ import { intiObject } from "../object/_newDecorator";
 
 export function vaildateParam(
   argument: number,
-  objectPath: string,
-  objectType: any
+  objectType: any,
+  objectPath?: string,
 ) {
   return function (
     target: object,

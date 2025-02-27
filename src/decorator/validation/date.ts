@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-rest-params */
 import ValidationHelper from '../../validation/ValidationHelper';
-import { valDecorator } from '../object/_newDecorator';
+import { validate } from '../object/_newDecorator';
 
 export function type(
   format:
@@ -15,7 +15,7 @@ export function type(
     | 'YYYY-MM-DD HH:mm:ss'
     | 'YYYY-MM-DDTHH:mm:ssZSSSS' = 'YYYY-MM-DD'
 ) {
-  return valDecorator<typeof format>((value, name, format) => {
+  return validate<typeof format>((value, name, format) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
       val.dateOnly(value.field, name, format);
@@ -28,7 +28,7 @@ export function range(
   maxDiff: number,
   mode: 'months' | 'years' | 'days'
 ) {
-  return valDecorator((value, name) => {
+  return validate((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
       if (

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-rest-params */
 import ValidationHelper from '../../validation/ValidationHelper';
-import { intiObject, valDecorator } from '../object/_newDecorator';
+import { intiObject, validate } from '../object/_newDecorator';
 
 function allStr() {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -20,7 +20,7 @@ function allStrLen(min: number, max: number) {
     min,
     max,
   };
-  return valDecorator<any>((value, name, data) => {
+  return validate<any>((value, name, data) => {
     const val = new ValidationHelper();
 
     if (value.field != undefined && value.field != null) {
@@ -33,7 +33,7 @@ function allStrLen(min: number, max: number) {
 }
 
 function length(length: number) {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
 
     if (value.field != undefined && value.field != null) {
@@ -50,7 +50,7 @@ function lengthInRange(min: number, max: number) {
     min,
     max,
   };
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -66,7 +66,7 @@ function withinCharMax(min: number, max: number, maxChar: number) {
     min,
     max,
   };
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     let strLength = 0;
 
     const val = new ValidationHelper();
@@ -85,7 +85,7 @@ function withinCharMax(min: number, max: number, maxChar: number) {
 }
 
 function allObj(objectType: any) {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -97,7 +97,7 @@ function allObj(objectType: any) {
 }
 
 function allEnums(enumModel: any) {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -109,7 +109,7 @@ function allEnums(enumModel: any) {
 }
 
 function allNums(mode: 'weak' | 'strong' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -121,7 +121,7 @@ function allNums(mode: 'weak' | 'strong' = 'weak') {
 }
 
 function allPositive(mode: 'weak' | 'strong' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);
@@ -133,7 +133,7 @@ function allPositive(mode: 'weak' | 'strong' = 'weak') {
 }
 
 function allNegative(mode: 'weak' | 'strong' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
       val.isArray(value.field, name);

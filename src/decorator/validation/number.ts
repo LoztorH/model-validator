@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-rest-params */
 import ValidationHelper from '../../validation/ValidationHelper';
-import { valDecorator } from '../object/_newDecorator';
+import { validate } from '../object/_newDecorator';
 
 function positive(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
   const data = { type: 'positive', mode, isFloat };
-  return valDecorator<any>((value, name, data) => {
+  return validate<any>((value, name, data) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, data);
@@ -15,7 +15,7 @@ function positive(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
 
 function negative(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
   const data = { type: 'negative', mode, isFloat };
-  return valDecorator<any>((value, name, data) => {
+  return validate<any>((value, name, data) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, data);
@@ -24,7 +24,7 @@ function negative(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
 }
 
 function notZero(mode: 'strong' | 'weak' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, { mode });
@@ -36,7 +36,7 @@ function notZero(mode: 'strong' | 'weak' = 'weak') {
 }
 
 function min(min: number, mode: 'strong' | 'weak' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, { mode });
@@ -48,7 +48,7 @@ function min(min: number, mode: 'strong' | 'weak' = 'weak') {
 }
 
 function max(max: number, mode: 'strong' | 'weak' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, { mode });
@@ -60,7 +60,7 @@ function max(max: number, mode: 'strong' | 'weak' = 'weak') {
 }
 
 function type(mode: 'strong' | 'weak' = 'weak') {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isNum(value.field, name, { mode });
@@ -69,7 +69,7 @@ function type(mode: 'strong' | 'weak' = 'weak') {
 }
 
 function int() {
-  return valDecorator<any>((value, name) => {
+  return validate<any>((value, name) => {
     const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
       val.isInt(value.field, name);

@@ -35,7 +35,7 @@ export function intiObject(data: any, objectType: any) {
   }
 }
 
-export function valDecorator<T>(func: DecoratorValFunc<T>, data?: T) {
+export function validate<T>(func: DecoratorValFunc<T>, data?: T) {
   return (target: any, name: PropertyKey): void => {
     const prevDescriptor: PropertyDescriptor | undefined =
       Object.getOwnPropertyDescriptor(
@@ -62,7 +62,7 @@ export function valDecorator<T>(func: DecoratorValFunc<T>, data?: T) {
   };
 }
 
-export function fmtDecorator<T>(func: DecoratorFmtFunc<T>, data?: T) {
+export function format<T>(func: DecoratorFmtFunc<T>, data?: T) {
   return (target: any, name: PropertyKey): void => {
     const prevDescriptor: PropertyDescriptor | undefined =
       Object.getOwnPropertyDescriptor(

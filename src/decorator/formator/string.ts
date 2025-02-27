@@ -3,10 +3,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { escapeRegExp, replaceAll } from '../../string/StringHelper';
-import { fmtDecorator } from '../object/_newDecorator';
+import { format } from '../object/_newDecorator';
 
 function trim() {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = value.field.trim();
       return str;
@@ -17,7 +17,7 @@ function trim() {
 }
 
 function urlDecode() {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = decodeURI(value.field);
       return str;
@@ -28,7 +28,7 @@ function urlDecode() {
 }
 
 function urlEncode() {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = encodeURI(value.field);
       return str;
@@ -39,7 +39,7 @@ function urlEncode() {
 }
 
 function toLowerCase() {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = value.field.toLowerCase();
       return str;
@@ -49,7 +49,7 @@ function toLowerCase() {
   });
 }
 function toUpperCase() {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = value.field.toUpperCase();
       return str;
@@ -60,7 +60,7 @@ function toUpperCase() {
 }
 
 function replace(find, replace) {
-  return fmtDecorator<string>((value, data) => {
+  return format<string>((value, data) => {
     if (value.field) {
       const str = replaceAll(value.field, escapeRegExp(find), replace);
       return str;

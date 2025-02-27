@@ -1,3 +1,3 @@
-import * as d from "./src/decorator/index";
+import * as mv from "./src/decorator/index";
 
-export { d };
+export { mv };

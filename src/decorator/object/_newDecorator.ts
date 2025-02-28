@@ -48,6 +48,7 @@ export function validate<T>(func: DecoratorValFunc<T>, data?: T) {
         if (prevDescriptor && prevDescriptor.set) {
           prevDescriptor.set(value);
         }
+        return value;
         //const fieldNameForDisplay = toSnakeCase(name.toString());
       },
       enumerable: true,
@@ -79,10 +80,9 @@ export function format<T>(func: DecoratorFmtFunc<T>, data?: T) {
           newVal = prevDescriptor.set(newVal);
         }
 
-        if (newVal) {
-          this.value = newVal.field;
-        }
-        return newVal ?? (newVal.field || this.value);
+        this.value = newVal.field;
+
+        return this.value;
         //const fieldNameForDisplay = toSnakeCase(name.toString());
       },
       get: function getter() {

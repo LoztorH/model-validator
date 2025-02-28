@@ -2,8 +2,9 @@
 Easy to use decorator for model checking. 
 
 ## Insert a decorator to a model
-declare a class
 ```
+import { mv } from "loztorh-model-validator";
+
 class foo {
   @mv.checkNum.type()
   baz?: number;
@@ -20,6 +21,8 @@ class foo {
 
 ## Vaildate param in a function
 ```
+import { mv } from "loztorh-model-validator";
+
 class Controller {
   @mv.vaildateParam(0, foo)
   test(value: foo) {
@@ -30,6 +33,8 @@ class Controller {
 
 ## Customizable vaildator
 ```
+import { validate } from "loztorh-model-validator";
+
 class foo {
   @validate((value, name) => {
     if (value.field != "bar") {

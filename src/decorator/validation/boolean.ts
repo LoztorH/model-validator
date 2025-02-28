@@ -7,9 +7,8 @@ import { validate } from '../object/_newDecorator';
 
 export function type() {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
-      val.isBoolean(value.field, name);
+      ValidationHelper.isBoolean(value.field, name);
     }
   });
 }

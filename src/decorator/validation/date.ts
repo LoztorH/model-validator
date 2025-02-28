@@ -16,9 +16,8 @@ export function type(
     | 'YYYY-MM-DDTHH:mm:ssZSSSS' = 'YYYY-MM-DD'
 ) {
   return validate<typeof format>((value, name, format) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
-      val.dateOnly(value.field, name, format);
+      ValidationHelper.dateOnly(value.field, name, format);
     }
   }, format);
 }
@@ -29,14 +28,13 @@ export function range(
   mode: 'months' | 'years' | 'days'
 ) {
   return validate((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
       if (
         value.object[toDateFieldName] != undefined &&
         value.object[toDateFieldName] != null &&
         value.object[toDateFieldName] != ''
       ) {
-        val.maxDate(value.field, value.object[toDateFieldName], maxDiff, mode, value.field, toDateFieldName);
+        ValidationHelper.maxDate(value.field, value.object[toDateFieldName], maxDiff, mode, value.field, toDateFieldName);
       }
     }
   });

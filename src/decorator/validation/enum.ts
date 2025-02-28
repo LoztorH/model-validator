@@ -5,9 +5,8 @@ import { validate } from '../object/_newDecorator';
 
 export function type(enumModel: any) {
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field != '') {
-      val.isEnum(value.field, name, data, { type: 'weak' });
+      ValidationHelper.isEnum(value.field, name, data, { type: 'weak' });
     }
   }, enumModel);
 }

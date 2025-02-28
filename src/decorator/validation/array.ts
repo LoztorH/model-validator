@@ -5,11 +5,10 @@ import { intiObject, validate } from '../object/_newDecorator';
 
 function allStr() {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
-        val.isString(obj, name);
+        ValidationHelper.isString(obj, name);
       }
     }
   });
@@ -21,12 +20,10 @@ function allStrLen(min: number, max: number) {
     max,
   };
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
-
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const str of value.field) {
-        val.isString(str, name, data);
+        ValidationHelper.isString(str, name, data);
       }
     }
   }, data);
@@ -34,10 +31,8 @@ function allStrLen(min: number, max: number) {
 
 function length(length: number) {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
-
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       if (value.field.length != length) {
         throw new Error();
       }
@@ -51,9 +46,8 @@ function lengthInRange(min: number, max: number) {
     max,
   };
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       if (value.field.length < min || value.field.length > max) {
         throw new Error();
       }
@@ -68,13 +62,10 @@ function withinCharMax(min: number, max: number, maxChar: number) {
   };
   return validate<any>((value, name) => {
     let strLength = 0;
-
-    const val = new ValidationHelper();
-
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const str of value.field) {
-        val.isString(str, name, data);
+        ValidationHelper.isString(str, name, data);
         strLength += str.length;
       }
     }
@@ -86,9 +77,8 @@ function withinCharMax(min: number, max: number, maxChar: number) {
 
 function allObj(objectType: any) {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
         intiObject(obj, objectType);
       }
@@ -98,11 +88,10 @@ function allObj(objectType: any) {
 
 function allEnums(enumModel: any) {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
-        val.isEnum(obj, name, enumModel, { type: 'weak' });
+        ValidationHelper.isEnum(obj, name, enumModel, { type: 'weak' });
       }
     }
   });
@@ -110,11 +99,10 @@ function allEnums(enumModel: any) {
 
 function allNums(mode: 'weak' | 'strong' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
-        val.isNum(obj, name, { mode });
+        ValidationHelper.isNum(obj, name, { mode });
       }
     }
   });
@@ -122,11 +110,10 @@ function allNums(mode: 'weak' | 'strong' = 'weak') {
 
 function allPositive(mode: 'weak' | 'strong' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
-        val.isNum(obj, name, { mode, type: 'positive' });
+        ValidationHelper.isNum(obj, name, { mode, type: 'positive' });
       }
     }
   });
@@ -134,11 +121,10 @@ function allPositive(mode: 'weak' | 'strong' = 'weak') {
 
 function allNegative(mode: 'weak' | 'strong' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isArray(value.field, name);
+      ValidationHelper.isArray(value.field, name);
       for (const obj of value.field) {
-        val.isNum(obj, name, { mode, type: 'negative' });
+        ValidationHelper.isNum(obj, name, { mode, type: 'negative' });
       }
     }
   });

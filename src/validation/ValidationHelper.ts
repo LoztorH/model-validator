@@ -2,7 +2,7 @@
 import moment from "moment";
 
 export default class ValidationHelper {
-  dateOnly(
+  static dateOnly(
     date: string | Date,
     fieldName: string,
     format:
@@ -19,7 +19,7 @@ export default class ValidationHelper {
     }
   }
 
-  maxDate(
+  static maxDate(
     fromDate: string | Date,
     toDate: string | Date,
     maxDiff: number,
@@ -39,12 +39,12 @@ export default class ValidationHelper {
     }
   }
 
-  isBoolean(str: any, fieldName: string) {
+  static isBoolean(str: any, fieldName: string) {
     if (str == false || str == "false" || str == 0 || str == "0") {
       throw new Error(`${fieldName} must be boolean`);
     }
   }
-  isEmail(email: string, fieldName: string) {
+  static isEmail(email: string, fieldName: string) {
     const re =
       // eslint-disable-next-line no-useless-escape
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -52,7 +52,7 @@ export default class ValidationHelper {
       throw new Error(`${fieldName} must be a vaild email`);
     }
   }
-  isNum(data: any, fieldName: string, isNumOpt?: isNumOpt) {
+  static isNum(data: any, fieldName: string, isNumOpt?: isNumOpt) {
     const re = /^-?[\d.]+(?:e-?\d+)?$/;
     const valid = re.test(data);
     if (isNumOpt?.mode == "strong" && typeof data !== "number") {
@@ -99,13 +99,13 @@ export default class ValidationHelper {
     return valid;
   }
 
-  isNullOrEmpty(data: any, fieldName: string) {
+  static isNullOrEmpty(data: any, fieldName: string) {
     if (data === null || data === undefined || data === "") {
       throw new Error(`${fieldName} is required`);
     }
   }
 
-  isInt(data: any, fieldName: string) {
+  static isInt(data: any, fieldName: string) {
     const re = /^-?[\d.]+(?:e-?\d+)?$/;
     const valid = re.test(data);
     if (!valid) {
@@ -117,7 +117,7 @@ export default class ValidationHelper {
     }
   }
 
-  isEnum(data: any, fieldName: string, enums: any, Opt?: EnumValOpt) {
+  static isEnum(data: any, fieldName: string, enums: any, Opt?: EnumValOpt) {
     const enumForCompare: any = JSON.parse(JSON.stringify(enums));
     let dataForCompare = JSON.parse(JSON.stringify(data));
     if (Opt?.type == "weak") {
@@ -144,12 +144,13 @@ export default class ValidationHelper {
       throw new Error(`${fieldName} must be ${stringArr.join(', ')}`);
   }
 
-  isArray(data: any, fieldName: string) {
+  static isArray(data: any, fieldName: string) {
     if (!Array.isArray(data)) {
       throw new Error(`${fieldName} must be aray`);
     }
   }
-  isString(data: any, fieldName: string, isStringOpt?: isString) {
+
+  static isString(data: any, fieldName: string, isStringOpt?: isString) {
     if (isStringOpt?.max) {
       if (data.length > isStringOpt?.max) {
         throw new Error(`${fieldName} length must not greater than ${isStringOpt.max}`);
@@ -161,26 +162,11 @@ export default class ValidationHelper {
       }
     }
   }
-  startsWith(data: any, fieldName: string, startswith: string) {
+  static startsWith(data: any, fieldName: string, startswith: string) {
     const regex = new RegExp(`^${startswith}.*$`);
     const valid = regex.test(data);
     if (!valid) {
       throw new Error(`${fieldName} must start with ${startswith}`);
     }
   }
-}
-
-interface EnumValOpt {
-  type?: "strong" | "weak";
-}
-
-interface isNumOpt {
-  type?: "positive" | "negative";
-  mode?: "strong" | "weak";
-  isFloat?: boolean;
-}
-
-interface isString {
-  max?: number;
-  min?: number;
 }

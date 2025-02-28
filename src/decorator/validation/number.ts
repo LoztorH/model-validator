@@ -6,9 +6,8 @@ import { validate } from '../object/_newDecorator';
 function positive(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
   const data = { type: 'positive', mode, isFloat };
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, data);
+      ValidationHelper.isNum(value.field, name, data);
     }
   }, data);
 }
@@ -16,18 +15,16 @@ function positive(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
 function negative(mode: 'strong' | 'weak' = 'weak', isFloat?: boolean) {
   const data = { type: 'negative', mode, isFloat };
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, data);
+      ValidationHelper.isNum(value.field, name, data);
     }
   }, data);
 }
 
 function notZero(mode: 'strong' | 'weak' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, { mode });
+      ValidationHelper.isNum(value.field, name, { mode });
       if (value.field == 0) {
         throw new Error();
       }
@@ -37,9 +34,8 @@ function notZero(mode: 'strong' | 'weak' = 'weak') {
 
 function min(min: number, mode: 'strong' | 'weak' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, { mode });
+      ValidationHelper.isNum(value.field, name, { mode });
       if (value.field < min) {
         throw new Error();
       }
@@ -49,9 +45,8 @@ function min(min: number, mode: 'strong' | 'weak' = 'weak') {
 
 function max(max: number, mode: 'strong' | 'weak' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, { mode });
+      ValidationHelper.isNum(value.field, name, { mode });
       if (value.field > max) {
         throw new Error();
       }
@@ -61,18 +56,16 @@ function max(max: number, mode: 'strong' | 'weak' = 'weak') {
 
 function type(mode: 'strong' | 'weak' = 'weak') {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isNum(value.field, name, { mode });
+      ValidationHelper.isNum(value.field, name, { mode });
     }
   });
 }
 
 function int() {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null && value.field !== '') {
-      val.isInt(value.field, name);
+      ValidationHelper.isInt(value.field, name);
     }
   });
 }

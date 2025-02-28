@@ -5,9 +5,8 @@ import { validate } from '../object/_newDecorator';
 
 function startsWith(startsWith: string) {
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.startsWith(value.field, name, data);
+      ValidationHelper.startsWith(value.field, name, data);
     }
   }, startsWith);
 }
@@ -18,18 +17,16 @@ function len(min: number, max: number) {
     max: max,
   };
   return validate<any>((value, name, data) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isString(value.field, name, data);
+      ValidationHelper.isString(value.field, name, data);
     }
   }, data);
 }
 
 function email() {
   return validate<any>((value, name) => {
-    const val = new ValidationHelper();
     if (value.field != undefined && value.field != null) {
-      val.isEmail(value.field, name);
+      ValidationHelper.isEmail(value.field, name);
     }
   });
 }
